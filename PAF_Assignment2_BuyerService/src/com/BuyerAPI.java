@@ -47,7 +47,8 @@ public class BuyerAPI extends HttpServlet {
 			 request.getParameter("BuyerName"), 
 			 request.getParameter("BuyerEmail"), 
 			 request.getParameter("BuyerContactNumber"),
-			 request.getParameter("BuyerAddress")); 
+			 request.getParameter("BuyerAddress")
+			 );
 			 response.getWriter().write(output); 
 			}
 	   

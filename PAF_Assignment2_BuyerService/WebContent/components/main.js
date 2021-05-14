@@ -74,7 +74,7 @@ function onBuyerSaveComplete(response, status){
 //UPDATE========================================== 
 $(document).on("click", ".btnUpdate", function(event) 
 		{     
-	$("#hidBuyerIDSave").val($(this).closest("tr").find('#hidBuyerIDUpdate').val());     
+	$("#hidBuyerIDSave").val($(this).data("buyerID"));     
 	$("#BuyerCode").val($(this).closest("tr").find('td:eq(0)').text());    
 	$("#BuyerName").val($(this).closest("tr").find('td:eq(1)').text());     
 	$("#BuyerEmail").val($(this).closest("tr").find('td:eq(2)').text());     
@@ -91,16 +91,16 @@ $(document).on("click", ".btnRemove", function(event){
 	{
 		url : "BuyerAPI",
 		type : "DELETE",
-		data : "Buyer ID=" + $(this).data("buyerID"),
+		data : "BuyerID=" + $(this).data("buyerID"),
 		dataType : "text",
 		complete : function(response, status)
 		{
-			onBuyerDeletedComplete(response.responseText, status);
+			onBuyerDeleteComplete(response.responseText, status);
 		}
 	});
 });
 
-function onBuyerDeletedComplete(response, status)
+function onBuyerDeleteComplete(response, status)
 {
 	if(status == "success")
 	{
