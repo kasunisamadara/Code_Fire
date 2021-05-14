@@ -27,7 +27,7 @@ public class Buyer {
      return con; 
     } 
    
-   public String insertBuyer(String code, String name, String email, int contactNumber, String address) 
+   public String insertBuyer(String code, String name, String email, String contactNumber, String address) 
    { 
      String output = ""; 
      try
@@ -43,21 +43,18 @@ public class Buyer {
      String query = " insert into Buyer (`Buyer ID`,`Buyer Code`,`Buyer Name`,`Buyer Email`,`Buyer Contact Number`,`Buyer Address`)"+ " values (?, ?, ?, ?, ?, ?)"; 
      PreparedStatement preparedStmt = con.prepareStatement(query); 
      
-     //System.out.println("1");
     // binding values
     preparedStmt.setInt(1, 0); 
     preparedStmt.setString(2, code); 
     preparedStmt.setString(3, name); 
     preparedStmt.setString(4, email); 
-    preparedStmt.setInt(5,contactNumber); 
+    preparedStmt.setString(5,contactNumber); 
     preparedStmt.setString(6,address);
     
-    //System.out.println(code);
-   // System.out.println(name);
-    //System.out.println("2");
+   
    // execute the statement3
    preparedStmt.execute(); 
-   System.out.println("3");
+   //System.out.println("3");
    con.close(); 
    
 
@@ -85,8 +82,7 @@ public class Buyer {
        if (con == null) {
            	return "Error while connecting to the database for reading."; 
 } 
-   
-  //System.out.println("4");
+  
 //Prepare the html table to be displayed
   output = "<table border='1'><tr><th>Buyer Code</th><th>Buyer Name</th>" + "<th>Buyer Email</th>" + "<th>Buyer Contact Number</th>" +"<th>Buyer Address</th>" +"<th>Update</th><th>Remove</th></tr>"; 
 
@@ -106,7 +102,7 @@ public class Buyer {
    String BuyerAddress = rs.getString("Buyer Address"); 
    
    
-  // System.out.println("6");
+  
     // Add into the html table
    
     output += "<td>"  + BuyerCode + "</td>"; 
@@ -115,7 +111,7 @@ public class Buyer {
     output += "<td>" + BuyerContactNumber + "</td>"; 
     output += "<td>" + BuyerAddress +"</td>";
     
-    //System.out.println("7");
+   
     
    // buttons
     output += "<td><input name='btnUpdate' type='button' value='Update' "
@@ -138,7 +134,7 @@ public class Buyer {
  } 
    
    
-   public String updateBuyer(int ID, String code, String name, String email, int contactNum, String address)
+   public String updateBuyer(int ID, String code, String name, String email, String contactNum, String address)
    { 
     String output = ""; 
     try
@@ -150,30 +146,25 @@ public class Buyer {
 	
 	} 
   
-  //System.out.println("a");
-//create a prepared statement
+  
+   //create a prepared statement
    String query = "UPDATE Buyer SET `Buyer Code`=?,`Buyer Name`=?,`Buyer Email`=?,`Buyer Contact Number`=?,`Buyer Address`=? WHERE `Buyer ID`=?"; 
    PreparedStatement preparedStmt = con.prepareStatement(query); 
    
    
-   //System.out.println("b");
-//binding values
+   
+   //binding values
    preparedStmt.setString(1, code); 
    preparedStmt.setString(2, name);
    preparedStmt.setString(3, email); 
-   preparedStmt.setInt(4,contactNum); 
+   preparedStmt.setString(4,contactNum); 
    preparedStmt.setString(5, address); 
    preparedStmt.setInt(6, ID); 
    
-  // System.out.println("c");
-
-   
-   
-   //System.out.println("d");
-   // execute the statement
+    // execute the statement
    preparedStmt.execute(); 
    
-   //System.out.println("e");
+  
    con.close(); 
  //create JSON object to show successful msg
    String newBuyer = readBuyer();
@@ -199,22 +190,22 @@ public class Buyer {
        {
 	       return "Error while connecting to the database for deleting."; 
         } 
-         System.out.println("down");
+    
     // create a prepared statement
        String query = "delete from Buyer where `Buyer ID`=?"; 
        PreparedStatement preparedStmt = con.prepareStatement(query); 
        
-       int buyerID=Integer.parseInt(BuyerID);
+       
       // System.out.println("sit :"+buyerID);
-
+       int buyerID=Integer.parseInt(BuyerID);
     // binding values
        preparedStmt.setInt(1,buyerID); 
        
-      // System.out.println("up");
-    // execute the statement
+      
+      // execute the statement
        preparedStmt.execute(); 
        
-       //System.out.println("ui");
+       
 
 		  //create JSON Object
 	   String newBuyer = readBuyer();

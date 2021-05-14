@@ -23,23 +23,23 @@
 				
 				<form id="formBuyer" name="formBuyer" method="post" action="buyer.jsp">  
 					Buyer Code:  
-					<input id="Buyer Code" name="Buyer Code" type="text" class="form-control form-control-sm">  
+					<input id="BuyerCode" name="BuyerCode" type="text" class="form-control form-control-sm">  
 					
 					<br> 
 					Buyer Name:  
-					<input id="Buyer Name" name="Buyer Name" type="text" class="form-control form-control-sm">  
+					<input id="BuyerName" name="BuyerName" type="text" class="form-control form-control-sm">  
 					
 					<br>
 					 Buyer Email:  
-					 <input id="Buyer Email" name="Buyer Email" type="text" class="form-control form-control-sm">  
+					 <input id="BuyerEmail" name="BuyerEmail" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
 					 Buyer Contact Number:  
-					 <input id="Buyer Contact Number" name="Buyer Contact Number" type="text" class="form-control form-control-sm">  
+					 <input id="BuyerContactNumber" name="BuyerContactNumber" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
 					  Buyer Address:  
-					 <input id="Buyer Address" name="Buyer Address" type="text" class="form-control form-control-sm">  
+					 <input id="BuyerAddress" name="BuyerAddress" type="text" class="form-control form-control-sm">  
 					 
 					 <br>  
 					 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">  

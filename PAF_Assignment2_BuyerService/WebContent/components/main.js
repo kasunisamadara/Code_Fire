@@ -34,7 +34,7 @@ $(document).on("click", "#btnSave", function(event)
 	$.ajax(
 	{
 		url : "BuyerAPI",
-		type : t,
+		type : type,
 		data : $("#formBuyer").serialize(),
 		dataType : "text",
 		complete : function(response, status)
@@ -75,11 +75,11 @@ function onBuyerSaveComplete(response, status){
 $(document).on("click", ".btnUpdate", function(event) 
 		{     
 	$("#hidBuyerIDSave").val($(this).closest("tr").find('#hidBuyerIDUpdate').val());     
-	$("#Buyer Code").val($(this).closest("tr").find('td:eq(0)').text());    
-	$("#Buyer Name").val($(this).closest("tr").find('td:eq(1)').text());     
-	$("#Buyer Email").val($(this).closest("tr").find('td:eq(2)').text());     
-	$("#Buyer Contact number").val($(this).closest("tr").find('td:eq(3)').text()); 
-	$("#Buyer Address").val($(this).closest("tr").find('td:eq(4)').text()); 
+	$("#BuyerCode").val($(this).closest("tr").find('td:eq(0)').text());    
+	$("#BuyerName").val($(this).closest("tr").find('td:eq(1)').text());     
+	$("#BuyerEmail").val($(this).closest("tr").find('td:eq(2)').text());     
+	$("#BuyerContactNumber").val($(this).closest("tr").find('td:eq(3)').text()); 
+	$("#BuyerAddress").val($(this).closest("tr").find('td:eq(4)').text()); 
 	
 
 });
@@ -129,24 +129,24 @@ function onBuyerDeletedComplete(response, status)
 //CLIENTMODEL
 function validateBuyerForm() {  
 	// CODE 
-	if ($("#Buyer Code").val().trim() == "")  {   
+	if ($("#BuyerCode").val().trim() == "")  {   
 		return "Insert Buyer Code.";  
 		
 	} 
 	
 	 // NAME 
-	if ($("#Buyer Name").val().trim() == "")  {   
+	if ($("#BuyerName").val().trim() == "")  {   
 		return "Insert Buyer Name.";  
 		
 	} 
 	 
 	 // Email 
-	if ($("#Buyer Email").val().trim() == "")  {   
+	if ($("#BuyerEmail").val().trim() == "")  {   
 		return "Insert Buyer Email.";  
 		
 	} 
 	 // is  numerical value
-	var tmpContactNumber =$("#Buyer Contact Number").val().trim();
+	var tmpContactNumber =$("#BuyerContactNumber").val().trim();
 	if(!$.isNumeric(tmpContactNumber))
 	{   
 		return "Insert a numerical value for Buyer Contact Number.";  
@@ -154,7 +154,7 @@ function validateBuyerForm() {
 	 
 	}
 	// Address  
-	if ($("#Buyer Address").val().trim() == "")  {   
+	if ($("#BuyerAddress").val().trim() == "")  {   
 		return "Insert Buyer address.";  
 		
 	} 

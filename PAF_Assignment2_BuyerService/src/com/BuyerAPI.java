@@ -26,41 +26,32 @@ public class BuyerAPI extends HttpServlet {
 	
     public BuyerAPI() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}*/
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	/*protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			 throws ServletException, IOException 
 			{ 
-			 String output = BuyerObj.insertBuyer(request.getParameter("Buyer Code"), 
-			 request.getParameter("Buyer Name"), 
-			 request.getParameter("Buyer Email"), 
-			 Integer.parseInt(request.getParameter("Buyer Contact Number")),
-			 request.getParameter("Buyer Address")); 
+			 String output = BuyerObj.insertBuyer(request.getParameter("BuyerCode"), 
+			 request.getParameter("BuyerName"), 
+			 request.getParameter("BuyerEmail"), 
+			 request.getParameter("BuyerContactNumber"),
+			 request.getParameter("BuyerAddress")); 
 			 response.getWriter().write(output); 
-			}*/
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BuyerObj = new Buyer();
-		
-		String output = BuyerObj.insertBuyer(request.getParameter("Buyer Code"), 
-			    request.getParameter("Buyer Name"), 
-			    request.getParameter("Buyer Email"), 
-				Integer.parseInt(request.getParameter("Buyer Contact Number")),
-			    request.getParameter("Buyer Address")
-				); 
-				response.getWriter().write(output);
-	}
+			}
+	   
+	
 			
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
@@ -87,59 +78,35 @@ public class BuyerAPI extends HttpServlet {
 	}
 	
 	
-	/*protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 		Map<String, String> param = getParasMap(request);
 		String result = BuyerObj.updateBuyer(Integer.parseInt(param.get("hidBuyerIDSave").toString()),
-				param.get("Buyer Code").toString(),    
-		 		param.get("Buyer Name").toString(),        
-		 		param.get("Buyer Email").toString(),        
-		 		Integer.parseInt(param.get("Buyer Contact Number").toString()), 
-		 		param.get("Buyer Address").toString());
+				param.get("BuyerCode").toString(),    
+		 		param.get("BuyerName").toString(),        
+		 		param.get("BuyerEmail").toString(),        
+		 	    param.get("BuyerContactNumber").toString(), 
+		 		param.get("BuyerAddress").toString());
 		 		
 		
 		response.getWriter().write(result);
-	}*/
-       protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	    BuyerObj = new Buyer();
-		
-		Map paras = getParasMap(request); 
-		String output = BuyerObj.updateBuyer(Integer.parseInt(paras.get("hidBuyerIDSave").toString()), 
-		paras.get("Buyer Code").toString(), 
-		paras.get("Buyer Name").toString(), 
-		paras.get("Buyer Email").toString(), 
-		Integer.parseInt(paras.get("Buyer Contact Number").toString()), 
-		paras.get("Buyer Address").toString()); 
-		response.getWriter().write(output); 
-		
 	}
+      
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
-	/*protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-		Map<String, String> param = getParasMap(request);
-		
-		String result = BuyerObj.deleteBuyer(param.get("buyerID").toString());
-		
-		response.getWriter().write(result);
-	}*/
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+
+		Map<String, String> param = getParasMap(request);
 		
-		BuyerObj = new Buyer();
-		Map<?, ?> paras = getParasMap(request); 
-		String output = BuyerObj.deleteBuyer(paras.get("BuyerID").toString()); 
-		response.getWriter().write(output); 
+		String result = BuyerObj.deleteBuyer(param.get("BuyerID").toString());
 		
+		response.getWriter().write(result);
 	}
+	
 	
 
 }
